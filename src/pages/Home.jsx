@@ -2,8 +2,8 @@ import DownloadResume from "../component/DownloadResume";
 import Hero from "../component/hero";
 
 const Home = () => {
-  const scrollY = () => {
-    const targetDiv = document.querySelector(".introduction");
+  const scrollY = (section) => {
+    const targetDiv = document.querySelector(`.${section}`);
     if (targetDiv) {
       targetDiv.scrollIntoView({ behavior: "smooth" });
     }
@@ -104,12 +104,15 @@ const Home = () => {
         </a>
       </div>
       <div
-        onClick={scrollY}
+        onClick={() => scrollY("projects-section")}
         className="bg-forest-500 text-milky-500 dark:bg-milky-500 dark:text-forest-500 border-2 border-brown-100 rounded-2xl w-40 mx-auto p-2 animate-bounce mb-10 transition delay-100"
       >
         Scroll Down &#8595;
       </div>
-      <Hero text={"Discover my projects and skills"} />
+      <Hero
+        className="projects-section"
+        text={"Discover my projects and skills"}
+      />
       <section className="introduction p-30 flex flex-col md:flex-row  justify-evenly items-center gap-10">
         <div className="text-left md:w-1/2">
           <p className="text-5xl font-bold">Hello, </p>
