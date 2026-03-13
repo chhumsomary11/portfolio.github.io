@@ -29,7 +29,7 @@ const Home = () => {
       <p>English For Teaching Student</p>
 
       <div className="contact-icons flex justify-center gap-6 mt-6 mb-6">
-        <a href="">
+        <a href="" className="hoverEffect">
           <svg
             class="w-6 h-6 text-gray-800 dark:text-milky-500"
             aria-hidden="true"
@@ -46,7 +46,7 @@ const Home = () => {
             />
           </svg>
         </a>
-        <a href="">
+        <a href="" className="hoverEffect">
           <svg
             class="w-6 h-6 text-gray-800 dark:text-white"
             aria-hidden="true"
@@ -64,7 +64,10 @@ const Home = () => {
             />
           </svg>
         </a>
-        <a href="https://www.linkedin.com/in/chhumso-mary-loeung-980574268/">
+        <a
+          href="https://www.linkedin.com/in/chhumso-mary-loeung-980574268/"
+          className="hoverEffect"
+        >
           <svg
             class="linkedIn w-6 h-6 "
             aria-hidden="true"
@@ -84,7 +87,7 @@ const Home = () => {
         </a>
         <a href="">
           <svg
-            class="w-6 h-6 text-gray-800 dark:text-white"
+            class="w-6 h-6 text-gray-800 dark:text-white hoverEffect"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="24"

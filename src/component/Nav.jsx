@@ -4,7 +4,7 @@ const Nav = () => {
   return (
     <div className=" justify-between items-center flex-row  fixed flex z-10  w-full p-4 bg-milky-500 dark:bg-forest-500 ">
       <Link
-        className=" brandName  text-forest-500 text-min text-3xl flex flex-row items-center gap-2 dark:text-milky-500"
+        className=" brandName hoverEffect  text-forest-500 text-min text-3xl flex flex-row items-center gap-2 dark:text-milky-500"
         to="/"
       >
         <svg
@@ -27,9 +27,13 @@ const Nav = () => {
         M
       </Link>
       <div className="flex gap-6 items-center">
-        <Link to="/aboutMe">About Me</Link>
+        <Link to="/aboutMe" className="hoverEffect">
+          About Me
+        </Link>
 
-        <Link to="/projects">Projects</Link>
+        <Link to="/projects" className="hoverEffect">
+          Projects
+        </Link>
         <Link
           className="bg-brown-500 border-2 border-brown-100 text-milky-500 p-2 rounded-2xl  hover:scale-105 hover:shadow-2xl transition-all duration-300"
           to="/contact"

@@ -26,3 +26,7 @@ body {
 .scaleTransition {
   @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
 }
+
+.hoverEffect {
+  @apply transition-all duration-500 hover:scale-150;
+}
