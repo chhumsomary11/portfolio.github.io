@@ -1,5 +1,8 @@
 import DownloadResume from "../component/DownloadResume";
-import Hero from "../component/hero";
+import Contact from "./Contact";
+import Footer from "../component/Footer";
+import Projects from "../component/Projects.jsx";
+import Education from "./Education.jsx";
 
 const Home = () => {
   const scrollY = (section) => {
@@ -9,7 +12,7 @@ const Home = () => {
     }
   };
   return (
-    <div className="min-h-screen  text-center py-12">
+    <div className="min-h-screen  home text-center " id="home">
       <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold mb-4 underline underline-offset-8 ">
         Welcome to My Portfolio
       </h1>
@@ -20,14 +23,12 @@ const Home = () => {
           alt="mountains"
         />
       </div>
-
       <p className="text-8xl text-center brandName mt-10 dark:text-amber-500">
         {" "}
         Chhumsomary
       </p>
       <p>ICT Student </p>
       <p>English For Teaching Student</p>
-
       <div className="contact-icons flex justify-center gap-6 mt-6 mb-6">
         <a href="" className="hoverEffect">
           <svg
@@ -104,16 +105,17 @@ const Home = () => {
         </a>
       </div>
       <div
-        onClick={() => scrollY("projects-section")}
+        onClick={() => scrollY("introduction")}
         className="bg-forest-500 text-milky-500 dark:bg-milky-500 dark:text-forest-500 border-2 border-brown-100 rounded-2xl w-40 mx-auto p-2 animate-bounce mb-10 transition delay-100"
       >
         Scroll Down &#8595;
       </div>
-      <Hero
-        className="projects-section"
-        text={"Discover my projects and skills"}
-      />
-      <section className="introduction p-30 flex flex-col md:flex-row  justify-evenly items-center gap-10">
+
+      {/* about me section */}
+      <section
+        id="about"
+        className="introduction p-30 flex flex-col md:flex-row  justify-evenly items-center gap-10"
+      >
         <div className="text-left md:w-1/2">
           <p className="text-5xl font-bold">Hello, </p>
           <p className="text-5xl font-bold">I'm Mary!</p>
@@ -146,22 +148,42 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* <section class="mt-10 flex flex-col md:flex-row gap-10">
-        <div class="text-center md:text-left
-          <p class="text-5xl font-bold">Hello, I'm Han!</p>
-          <p class="mt-5 text-xl text-gray-600">
-            Self-taught Graphic Designer with experience in marketing &
-            communication.
-          </p>
-        </div>
-        <div class="flex justify-center md:justify-start">
-          <img
-            src="src/assets/images/photos/portfolio.jpeg"
-            alt="Han's photo"
-            class="w-64 h-64 rounded-full object-cover shadow-lg"
+
+      {/* education section */}
+      <div id="education"></div>
+      <Education />
+
+      {/* projects section */}
+      <div id="projects"></div>
+
+      <Projects className="projects-section" />
+
+      {/* contact section */}
+      <div id="contact"></div>
+      <Contact />
+      <button
+        onClick={() => {
+          scrollY("home");
+        }}
+        aria-label="Scroll to top"
+        className=" m-0 z-50 sticky right-6 bottom-0 w-10 h-10 flex items-center justify-center rounded-full bg-amber-700 hover:bg-amber-800 text-amber-100 shadow-lg transition-all duration-200 hover:-translate-y-1 hover:shadow-xl animate-bounce"
+      >
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24">
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M12 6v13m0-13 4 4m-4-4-4 4"
           />
-        </div>
-      </section> */}
+        </svg>
+      </button>
+      {/* footer section */}
+      <div className="relative">
+        <Footer className=" absolute bottom-0 h-full  max-h" />
+      </div>
+
+      {/* Scroll to top button */}
     </div>
   );
 };

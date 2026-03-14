@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
-
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({ top: 10, behavior: "smooth" });
+  // };
 
   return (
     <footer className="relative bg-amber-500 overflow-hidden">
@@ -21,7 +19,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
           {/* Brand */}
           <div className="flex flex-col gap-3">
-            <Link className="flex items-center gap-2 group" to="/">
+            <a className="flex items-center gap-2 group" href="/">
               <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-600/40 group-hover:bg-amber-600/60 transition-colors duration-300">
                 <svg
                   className="w-6 h-6 text-amber-100"
@@ -48,14 +46,14 @@ const Footer = () => {
               >
                 Chhumsomary
               </span>
-            </Link>
+            </a>
             <p className="text-amber-100/70 text-sm max-w-[200px] leading-relaxed">
               Crafting thoughtful digital experiences.
             </p>
           </div>
 
           {/* Quick links */}
-          <div className="flex flex-col gap-2">
+          {/* <div className="flex flex-col gap-2">
             <p className="text-amber-200 text-xs font-semibold uppercase tracking-widest mb-1">
               Navigate
             </p>
@@ -71,7 +69,7 @@ const Footer = () => {
                 {item}
               </Link>
             ))}
-          </div>
+          </div> */}
 
           {/* Social icons */}
           <div className="flex flex-col gap-3">
@@ -171,23 +169,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-
-      {/* Scroll to top button */}
-      <button
-        onClick={scrollToTop}
-        aria-label="Scroll to top"
-        className="absolute right-6 bottom-6 w-10 h-10 flex items-center justify-center rounded-full bg-amber-700 hover:bg-amber-800 text-amber-100 shadow-lg transition-all duration-200 hover:-translate-y-1 hover:shadow-xl animate-bounce"
-      >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24">
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M12 6v13m0-13 4 4m-4-4-4 4"
-          />
-        </svg>
-      </button>
     </footer>
   );
 };
