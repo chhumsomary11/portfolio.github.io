@@ -435,7 +435,7 @@ const Hero = ({ text = "My Projects" }) => {
         }
       `}</style>
 
-      <section className="projects-section">
+      <section id="projects" className="projects-section">
         <div className="section-inner">
           {/* Header */}
           <p className="section-eyebrow">

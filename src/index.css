@@ -17,12 +17,12 @@ body {
   font-family: "Fleur De Leah", cursive;
 }
 
-.page {
+/* .page {
   padding-top: 5%;
-}
+} */
 
-.home {
-  padding-top: 5%;
+#home {
+  padding-top: 8%;
 }
 
 /* styles.css */
