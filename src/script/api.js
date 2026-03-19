@@ -1,0 +1,1 @@
+const key = process.env.REACT_APP_EMAILJS_KEY;

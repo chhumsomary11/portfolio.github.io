@@ -1,10 +1,16 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import MarsBackground from "../component/MarsBackground";
 
 const Contact = () => {
   const form = useRef();
   const [status, setStatus] = useState("");
   const [sending, setSending] = useState(false);
+
+  const key = import.meta.env.VITE_EMAIL_KEY;
+  const template = import.meta.env.VITE_EMAIL_TEMPLATE;
+  const service = import.meta.env.VITE_EMAIL_SERVICE;
+  console.log(key, template, service);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,8 +18,8 @@ const Contact = () => {
     setSending(true);
 
     emailjs
-      .sendForm("service_0zunuqi", "template_q9c4q0s", form.current, {
-        publicKey: "7P8K9NxrQuhvLShb4",
+      .sendForm(service, template, form.current, {
+        publicKey: key,
       })
       .then(
         () => {
@@ -40,6 +46,7 @@ const Contact = () => {
         px-6 py-24 transition-colors duration-300
       "
     >
+      <MarsBackground />
       {/* Card */}
       <div
         className="
