@@ -28,3 +28,4 @@ dist-ssr
 # ignore build env
 .env
 .env.local
+.vercel

@@ -370,7 +370,7 @@
 // }
 
 import { useState, useRef, useEffect } from "react";
-import { postPrompt } from "../script/script.js"; // adjust path to match your project structure
+// import { postPrompt } from "../../api/script.js"; // adjust path to match your project structure
 
 const QUICK_REPLIES = ["Projects", "Skills", "Contact", "Education"];
 
@@ -465,12 +465,19 @@ export default function Chatbot() {
     setTyping(true);
 
     try {
-      const data = await postPrompt(text.trim());
+      const data = await fetch("/api/geminiAPI", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt: text.trim() }),
+      });
+      const result = await data.json();
       // Handle common Gemini response shapes
       const reply =
-        data?.response ||
-        data?.text ||
-        data?.message ||
+        result?.response ||
+        result?.text ||
+        result?.message ||
         data?.candidates?.[0]?.content?.parts?.[0]?.text ||
         "Got it! ✅";
 

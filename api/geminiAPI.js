@@ -1,0 +1,124 @@
+// // This is the endpoint for Chatbot
+// // "api/geminiAPI" will be the endpoint for chatbot to fetch the data
+
+// import { GoogleGenAI } from "@google/genai";
+
+// const handler = async (req, res) => {
+//   if (req.method !== "POST") {
+//     res.status(400).json({ error: "Invalid request method" });
+//     return;
+//   }
+
+//   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_KEY });
+//   const aiModel = "gemini-3-flash-preview";
+
+//   const { prompt } = req.body;
+
+//   const knowledge = `
+// This website is a portfolio of Chhumsomary, an ICT and Data Science student.
+// He has experience in AI, web development, and cloud computing.
+// Projects include:
+// - AI posture detection (won national competition)
+// - UniSites platform for students in Cambodia
+// - Full-stack e-commerce app using Node.js
+
+// Skills:
+// - JavaScript, Python, React, Node.js
+// - Machine Learning and Computer Vision
+
+// You are an AI assistant for a personal portfolio website.
+
+// Answer based on the information below and act like you are the person with the identity of the website owner. You can also answer questions about yourself based on the information provided.
+// If the answer is not in the information, say "I don't know based on the provided data."
+
+// `;
+
+//   try {
+//     const response = await aiModel.generateContent({
+//       model: aiModel,
+//       contents: prompt,
+//       config: {
+//         systemInstructions: knowledge,
+//       },
+//     });
+//     res.status(200).json({ response: response.choices[0].text });
+//   } catch (error) {
+//     console.error("Error generating content:", error);
+//     res.status(500).json({ error: "Failed to generate content" });
+//   }
+// };
+
+// export default handler;
+
+import { GoogleGenAI } from "@google/genai";
+import { config } from "dotenv";
+
+const handler = async (req, res) => {
+  if (req.method !== "POST") {
+    res.status(400).json({ error: "Invalid request method" });
+    return;
+  }
+
+  const { prompt } = req.body;
+
+  if (!prompt) {
+    res.status(400).json({ error: "Prompt is required" });
+    return;
+  }
+
+  const knowledge = `
+This website is a portfolio of Chhumsomary, an ICT and Data Science student.
+He has experience in AI, web development, and cloud computing.
+Projects include:
+- AI posture detection (won national competition)
+- UniSites platform for students in Cambodia
+- Full-stack e-commerce app using Node.js
+
+Skills:
+- JavaScript, Python, React, Node.js
+- Machine Learning and Computer Vision
+
+Contact:
+- Email: dananloeung@gmail.com
+or email me through the contact form on the website
+`;
+
+  const fullPrompt = `
+You are an AI assistant for a personal portfolio website.
+
+Answer based on the information below and act like you are the person with the identity of the website owner. You can also answer questions about yourself based on the information provided. Be a bit introvert because the owner is an introvert.
+
+Information:
+${knowledge}
+
+User question:
+${prompt}
+`;
+
+  try {
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_KEY });
+    const result = await ai.models.generateContent({
+      model: "gemini-3-flash-preview",
+      contents: fullPrompt,
+      //   contents: [
+      //     // ✅ array format, not plain string
+      //     {
+      //       role: "user",
+      //       parts: [{ text: prompt }], // ✅ wrapped in parts
+      //     },
+      //   ],
+      //   config: { systemInstruction: knowledge },
+    });
+
+    // const result = await model.generateContent(prompt);
+    const text = result.text;
+    res.status(200).json({ response: text });
+
+    return text;
+  } catch (error) {
+    console.error("Error:", error.message);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export default handler;
