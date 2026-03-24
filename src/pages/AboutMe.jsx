@@ -29,7 +29,7 @@ const AboutMe = () => {
           Confidence
         </div>
         <img
-          src="public/images/profile.JPG"
+          src="/images/profile.JPG"
           alt="portfolio"
           className="w-70 h-80 object-cover rounded-t-full  absolute top-14 left-5 shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
         />

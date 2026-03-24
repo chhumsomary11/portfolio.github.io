@@ -25,7 +25,7 @@ const Home = () => {
         <div className="relative mx-auto w-76 h-76">
           <img
             className="object-cover mask-b-from-50% mask-t-from-90% mask-radial-[50%_50%] mask-radial-from-80%"
-            src="public/images/portfolio.jpeg"
+            src="/images/portfolio.jpeg"
             alt="mountains"
           />
         </div>
