@@ -1,62 +1,14 @@
 import { useState } from "react";
+import { projects, filters } from "../assets/data/projects";
 
 const Hero = ({ text = "My Projects" }) => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  const objects = [
-    {
-      img: "src/assets/images/photos/portfolio.jpeg",
-      title: "Movie Application",
-      description:
-        "Browse, search, and discover films with a sleek cinematic interface powered by a live movie database.",
-      tag: "React",
-      category: "Web App",
-      number: "01",
-      link: "#",
-      github: "#",
-    },
-    {
-      img: "src/assets/images/photos/portfolio.jpeg",
-      title: "POSE UP",
-      subtitle: "AI Posture Assistant",
-      description:
-        "Real-time posture detection and coaching powered by computer vision and machine learning.",
-      tag: "AI · Python",
-      category: "AI",
-      number: "02",
-      link: "#",
-      github: "#",
-    },
-    {
-      img: "src/assets/images/photos/portfolio.jpeg",
-      title: "Weather App",
-      description:
-        "Elegant weather forecasting with live geolocation data and beautiful condition-based visuals.",
-      tag: "React · API",
-      category: "Web App",
-      number: "03",
-      link: "#",
-      github: "#",
-    },
-    {
-      img: "src/assets/images/photos/portfolio.jpeg",
-      title: "To-Do List",
-      description:
-        "Minimal, focused task management with drag-and-drop reordering and local persistence.",
-      tag: "React",
-      category: "Tool",
-      number: "04",
-      link: "#",
-      github: "#",
-    },
-  ];
-
-  const filters = ["All", "Web App", "AI", "Tool"];
   const filtered =
     activeFilter === "All"
-      ? objects
-      : objects.filter((o) => o.category === activeFilter);
+      ? projects
+      : projects.filter((o) => o.category === activeFilter);
 
   return (
     <>
@@ -223,7 +175,7 @@ const Hero = ({ text = "My Projects" }) => {
         /* ── Grid ── */
         .projects-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 20px;
         }
         @media (min-width: 960px) {
