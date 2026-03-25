@@ -1,7 +1,7 @@
 export const contacts = [
   {
     name: "Facebook",
-    link: "https://www.facebook.com/chhumsomary/",
+    link: "https://www.facebook.com/mary13052004/",
     svg: (
       <svg
         class="w-6 h-6 hoverEffect"
@@ -22,7 +22,7 @@ export const contacts = [
   },
   {
     name: "Instagram",
-    link: "https://www.instagram.com/chhumsomary/",
+    link: "https://www.instagram.com/marylightwood11/",
     svg: (
       <svg
         class="w-6 h-6 hoverEffect"
@@ -66,7 +66,7 @@ export const contacts = [
   },
   {
     name: "GitHub",
-    link: "https://github.com/chhumsomary",
+    link: "https://github.com/chhumsomary11",
     svg: (
       <svg
         class="w-6 h-6 hoverEffect"
