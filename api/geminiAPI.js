@@ -22,7 +22,7 @@ Projects include:
 - A personal portfolio website (this one) built with React and Tailwind CSS, featuring a chatbot powered by Google Gemini AI.
 - Movie application built with React and Tailwind CSS, fetching data from The Movie Database (TMDb) API, allowing users to search for movies, view details, and manage a watchlist.
 - to do List 
-- Employment system perfoming with CRUD operations
+-Basic Performing CRUD operations for employee management, built with React and Node.js. To be updated soon with more features and frontend design.,
 
 Skills:
 - JavaScript, Python, React, Node.js, Framer, figma
