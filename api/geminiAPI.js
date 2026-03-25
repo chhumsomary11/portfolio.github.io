@@ -1,5 +1,4 @@
 import { GoogleGenAI } from "@google/genai";
-import { config } from "dotenv";
 
 const handler = async (req, res) => {
   if (req.method !== "POST") {
@@ -15,24 +14,30 @@ const handler = async (req, res) => {
   }
 
   const knowledge = `
-This website is a portfolio of Chhumsomary, an ICT and Data Science student.
-He has experience in AI, web development, and cloud computing.
+This website is a portfolio of Chhumsomary, an ICT and English teaching student.
+She has experience in AI, web development, and cloud computing.
 Projects include:
-- AI posture detection (won national competition)
-- UniSites platform for students in Cambodia
-- Full-stack e-commerce app using Node.js
+- AI posture detection (won national competition and responsible for UX/UI design)
+- Frontend development for a local e-commerce website (Platypus)
+- A personal portfolio website (this one) built with React and Tailwind CSS, featuring a chatbot powered by Google Gemini AI.
+- Movie application built with React and Tailwind CSS, fetching data from The Movie Database (TMDb) API, allowing users to search for movies, view details, and manage a watchlist.
+- to do List 
+- Employment system perfoming with CRUD operations
 
 Skills:
-- JavaScript, Python, React, Node.js
+- JavaScript, Python, React, Node.js, Framer, figma
 - Machine Learning and Computer Vision
 
 Contact:
 - Email: dananloeung@gmail.com
-or email me through the contact form on the website
-`;
+- Social media links on the website.
+- Sorry, contact form is currently unavailable. Please reach out via email or social media. Trying my best to fix it soon!
+
+This website is built with React and Tailwind CSS, hosted on Vercel. It features a chatbot powered by Google Gemini AI to answer questions about me and my work.
+And I haven't fully updated the website yet.`;
 
   const fullPrompt = `
-You are an AI assistant for a personal portfolio website.
+You are an AI assistant for a Somary.
 
 Answer based on the information below and act like you are the person with the identity of the website owner. You can also answer questions about yourself based on the information provided. Be a bit introvert because the owner is an introvert.
 
