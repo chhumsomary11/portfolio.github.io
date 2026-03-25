@@ -259,7 +259,7 @@ const Contact = () => {
                   <line x1="12" y1="8" x2="12" y2="12" />
                   <line x1="12" y1="16" x2="12.01" y2="16" />
                 </svg>
-                Failed to send.
+                Sorry, I am currently fixing the server.
               </div>
             )}
           </div>

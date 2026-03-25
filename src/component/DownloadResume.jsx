@@ -1,5 +1,5 @@
 const DownloadResume = () => {
-  const fileUrl = "public/files/CV.pdf";
+  const fileUrl = "/files/CV.pdf";
   const handleDownload = () => {
     // Create a temporary link element
     const link = document.createElement("a");
