@@ -38,7 +38,7 @@ export const projects = [
     img: "/images/portfolio.jpeg",
     title: "Employment System",
     description:
-      "Basic Performing CRUD operations for employee management, built with React and Node.js.",
+      "Basic Performing CRUD operations for employee management, built with React and Node.js. To be updated soon with more features and frontend design.",
     tag: "React, Node.js, Express, mySQL",
     category: "Tool",
     number: "04",
