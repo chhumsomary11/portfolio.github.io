@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 // import { postPrompt } from "../../api/script.js"; // adjust path to match your project structure
 
