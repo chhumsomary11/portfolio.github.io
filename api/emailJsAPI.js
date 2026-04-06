@@ -2,7 +2,7 @@ import emailjs from "@emailjs/nodejs";
 
 const handle = async (req, res) => {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return res.status(400).json({ error: "Method not allowed" });
   }
 
   const { user_name, user_email, message } = req.body;
@@ -39,7 +39,11 @@ const handle = async (req, res) => {
       .json({ success: true, message: "Email sent successfully" });
   } catch (err) {
     console.error("Error sending email:", err);
-    return res.status(500).json({ success: false, error: err.message });
+    return res.status(500).json({
+      success: false,
+      error: err.message,
+      details: err, // add this
+    });
   }
 };
 
