@@ -124,6 +124,7 @@ const Contact = () => {
         className="
           relative z-10 w-full max-w-lg
           bg-white dark:bg-forest-500/80
+          dark:text-milky-500
           border border-forest-500/[0.08] dark:border-mint-500/[0.08]
           rounded-[28px] p-10 md:p-12
           shadow-[0_20px_60px_rgba(0,70,67,0.08)]
@@ -143,7 +144,7 @@ const Contact = () => {
         <h2 className="font-syne text-[2.2rem] font-extrabold tracking-tight leading-[1.1] text-forest-500 dark:text-milky-500 mb-2">
           Let's <em className="italic text-brown-500 not-italic">talk</em>
         </h2>
-        <p className="text-sm text-forest-500/50 dark:text-milky-500/40 leading-relaxed mb-8">
+        <p className="text-sm text-forest-500/50 dark:text-milky-500 leading-relaxed mb-8">
           Have a project in mind or just want to say hello? Send me a message
           and I'll get back to you soon.
         </p>

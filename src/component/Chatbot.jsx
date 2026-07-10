@@ -21,7 +21,7 @@ function Message({ msg }) {
   const isBot = msg.from === "bot";
   return (
     <div
-      className={`flex gap-2 items-end mb-3 ${isBot ? "flex-row" : "flex-row-reverse"}`}
+      className={` font-mono flex gap-2 items-end mb-3 ${isBot ? "flex-row" : "flex-row-reverse"}`}
     >
       <div
         className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-sm border
@@ -35,13 +35,12 @@ function Message({ msg }) {
       </div>
 
       <div
-        className={`max-w-[75%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed
+        className={`max-w-[75%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed text-left
           ${
             isBot
               ? "bg-milky-500 dark:bg-forest-500/30 text-forest-500 dark:text-milky-500 rounded-bl-sm border border-forest-500/20 dark:border-forest-500/40"
               : "bg-forest-500 dark:bg-brown-100 text-milky-500 dark:text-forest-500 rounded-br-sm"
           }`}
-        style={{ fontFamily: "'Syne', sans-serif" }}
       >
         {msg.text}
         <p
@@ -132,7 +131,7 @@ export default function Chatbot() {
 
   return (
     <>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap');`}</style>
+      {/* <style>{`@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap');`}</style> */}
 
       {/* Floating Toggle Button */}
       <button
@@ -199,7 +198,7 @@ export default function Chatbot() {
             </div>
             <div>
               <p className="text-milky-500 font-bold text-sm tracking-wide">
-                Som's Assistant
+                Mary's Assistant
               </p>
               <div className="flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
@@ -214,7 +213,7 @@ export default function Chatbot() {
           </div>
 
           {/* Dark mode toggle */}
-          <button
+          {/* <button
             onClick={() => setDark((d) => !d)}
             className="w-8 h-8 rounded-full flex items-center justify-center text-milky-500/70 hover:text-milky-500 hover:bg-milky-500/10 transition-colors"
             aria-label="Toggle dark mode"
@@ -240,14 +239,14 @@ export default function Chatbot() {
                 />
               </svg>
             )}
-          </button>
+          </button> */}
         </div>
 
         {/* Accent stripe */}
         <div className="h-0.5 bg-gradient-to-r from-brown-100 via-brown-500 to-forest-500" />
 
         {/* Messages */}
-        <div className="h-72 overflow-y-auto px-4 py-4">
+        <div className="h-72 overflow-y-auto px-4 py-4 text-align-left">
           {messages.map((msg) => (
             <Message key={msg.id} msg={msg} />
           ))}
@@ -267,7 +266,7 @@ export default function Chatbot() {
         </div>
 
         {/* Quick Replies */}
-        <div className="flex gap-2 px-4 pb-2 flex-wrap">
+        <div className="flex w-full flex-wrap justify-start gap-2 px-4 pb-2 text-left">
           {QUICK_REPLIES.map((q) => (
             <button
               key={q}

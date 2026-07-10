@@ -2,7 +2,7 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
-  --color-mint-500: ##abd1c6;
+  --color-mint-500: #abd1c6;
   --color-forest-500: #004643;
   --color-milky-500: #f8f5f2;
   --color-brown-100: #f9bc60;

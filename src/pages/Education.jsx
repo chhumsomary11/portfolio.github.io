@@ -10,14 +10,6 @@ const Education = () => {
       className="bg-milky-500 dark:bg-forest-500 text-forest-500 dark:text-milky-500 px-6 py-24 transition-colors duration-300"
     >
       <div className="max-w-2xl mx-auto">
-        {/* Eyebrow */}
-        <div className="flex items-center gap-3 mb-3">
-          <span className="w-7 h-px bg-coral-500 block" />
-          <p className="text-[11px] font-medium tracking-[0.22em] uppercase text-coral-500">
-            Background
-          </p>
-        </div>
-
         {/* Heading */}
         <h2 className="font-syne text-4xl md:text-5xl font-extrabold tracking-tight text-brown-100 mb-2 hover:scale-105 transition-transform duration-300">
           <em>Education</em>

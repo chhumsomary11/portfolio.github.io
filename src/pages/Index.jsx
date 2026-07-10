@@ -1,13 +1,14 @@
 import Contact from "./Contact.jsx";
 import Footer from "../component/Footer.jsx";
-import Projects from "../component/Projects.jsx";
+import Projects from "./ProjectList.jsx";
 import Education from "./Education.jsx";
 import AboutMe from "./AboutMe.jsx";
 import Chatbot from "../component/Chatbot.jsx";
 import MarsBackground from "../component/MarsBackground.jsx";
 import { contacts } from "../assets/data/contact_icon.jsx";
+import Experience from "./Experience.jsx";
 
-const Home = () => {
+const Index = () => {
   const scrollY = (section) => {
     const targetDiv = document.querySelector(`.${section}`);
     if (targetDiv) {
@@ -62,6 +63,8 @@ const Home = () => {
       <AboutMe />
       {/* education section */}
       <Education />
+      {/* experience section */}
+      <Experience />
       {/* projects section */}
       <Projects className="projects-section" />
       {/* contact section */}
@@ -91,4 +94,4 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+export default Index;
