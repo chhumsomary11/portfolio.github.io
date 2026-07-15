@@ -9,6 +9,12 @@
   --color-brown-500: #e16162;
 }
 
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+  --font-mono: "Space Mono", monospace;
+}
+
 body {
   font-family: monospace;
 }

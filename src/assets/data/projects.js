@@ -124,7 +124,7 @@ export const projects = [
 
     category: "Web App",
 
-    number: "04",
+    number: "05",
 
     tech: ["JavaScript", "React", "Tailwind CSS", "Gemini AI", "EmailJS"],
 

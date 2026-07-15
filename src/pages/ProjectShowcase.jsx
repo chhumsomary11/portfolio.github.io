@@ -57,7 +57,7 @@ export default function ProjectShowcase() {
         bg-milky-500
         text-forest-500
 
-        dark:bg-[#071412]
+        dark:bg-forest-500
         dark:text-milky-500
       "
     >
