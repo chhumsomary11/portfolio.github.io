@@ -66,7 +66,7 @@ const Index = () => {
       {/* experience section */}
       <Experience />
       {/* projects section */}
-      <Projects className="projects-section" />
+      <Projects id="projects" className="projects-section" />
       {/* contact section */}
       <Contact />
       <button

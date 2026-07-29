@@ -1,12 +1,14 @@
-
-
 import { useState, useEffect } from "react";
 import DarkBtn from "./DarkBtn";
+import { useLocation } from "react-router-dom";
 
 const Nav = () => {
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("home");
+
+  const isProjectsPage = location.pathname === "/projects";
 
   useEffect(() => {
     const onScroll = () => {
@@ -24,15 +26,29 @@ const Nav = () => {
     const sectionIds = ["home", "about", "education", "projects", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
-        const visibleSection = entries.find((entry) => entry.isIntersecting);
+        // const visibleSection = entries.find((entry) => entry.isIntersecting);
 
-        if (visibleSection) {
-          setActive(visibleSection.target.id);
-        }
+        // if (visibleSection) {
+        //   setActive(visibleSection.target.id);
+        // }
+        const visible = entries.filter((entry) => entry.isIntersecting);
+        if (visible.length === 0) return;
+        const best = visible.reduce(
+          (closest, entry) => {
+            const rect = entry.boundingClientRect;
+            const center = rect.top + rect.height / 2;
+            const viewportMiddle = window.innerHeight / 2;
+            const dist = Math.abs(center - viewportMiddle);
+            return dist < closest.dist ? { entry, dist } : closest;
+          },
+          { entry: visible[0], dist: Infinity },
+        );
+
+        setActive(best.entry.target.id);
       },
       {
         root: null,
-        rootMargin: "-35% 0px -55% 0px",
+        rootMargin: "-30% 0px -30% 0px",
         threshold: 0,
       },
     );
@@ -44,6 +60,32 @@ const Nav = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+
+    const raf = requestAnimationFrame(() => {
+      const sectionIds = ["home", "about", "education", "projects", "contact"];
+      let bestId = "home";
+      let bestDist = Infinity;
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const dist = Math.abs(center - window.innerHeight / 2);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestId = id;
+        }
+      }
+
+      setActive(bestId);
+    });
+
+    return () => cancelAnimationFrame(raf);
+  }, [location.pathname]);
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
@@ -60,6 +102,8 @@ const Nav = () => {
     { id: "projects", label: "Projects" },
     { id: "contact", label: "Contact" },
   ];
+
+  if (isProjectsPage) return null;
 
   return (
     <>
@@ -354,6 +398,7 @@ const Nav = () => {
             <button className="mobile-cta" onClick={() => scrollTo("contact")}>
               Contact
             </button>
+            <DarkBtn />
           </div>
         </div>
       </nav>

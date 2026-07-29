@@ -118,7 +118,7 @@ export const projects = [
       "A responsive personal portfolio website designed to showcase my projects, skills, and development journey through a modern interface and interactive motion effects.",
 
     longDescription:
-      "A modern personal portfolio built with React and Tailwind CSS to present my work, technical skills, and project experience in a clear and engaging way. The website includes responsive layouts, dark mode, animated project showcases, AI-powered interactions using Gemini AI, and a contact experience integrated with EmailJS.",
+      "A modern personal portfolio built with React and Tailwind CSS to present my work, technical skills, and project experience in a clear and engaging way. The website includes responsive layouts, dark mode, animated project showcases, advanced AI-powered interactions using OpenRouter and the Ling 3.0 model with native chain-of-thought reasoning, and a contact experience integrated with EmailJS.",
 
     tag: "React · Tailwind CSS",
 
@@ -126,7 +126,7 @@ export const projects = [
 
     number: "05",
 
-    tech: ["JavaScript", "React", "Tailwind CSS", "Gemini AI", "EmailJS"],
+    tech: ["JavaScript", "React", "Tailwind CSS", "OpenRouter AI", "EmailJS"],
 
     link: "YOUR_PORTFOLIO_URL",
 

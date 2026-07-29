@@ -17,29 +17,13 @@ import { projects } from "../assets/data/projects";
 
 export default function ProjectShowcase() {
   const location = useLocation();
-
-  // IMPORTANT:
-  // This <main> is the real scrolling container.
   const containerRef = useRef(null);
-
-  /* ====================================================
-     SCROLL TO PROJECT FROM URL HASH
-
-     Example:
-     /projects#project-pose-up
-  ==================================================== */
 
   useEffect(() => {
     if (!location.hash) return;
-
     const target = document.querySelector(location.hash);
-
     if (!target) return;
-
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [location.hash]);
 
   return (
@@ -106,14 +90,8 @@ export default function ProjectShowcase() {
       </Link>
 
       {/* =================================================
-          SIDE PROJECT NAVIGATION
-      ================================================= */}
-
-      <ProjectNavigation />
-
-      {/* =================================================
-          ALL PROJECTS
-      ================================================= */}
+           ALL PROJECTS
+       ================================================= */}
 
       {projects.map((project, index) => (
         <ProjectMotionScene
@@ -758,72 +736,3 @@ function ProjectMotionScene({ project, index, total, containerRef }) {
 /* ======================================================
    SIDE PROJECT NAVIGATION
 ====================================================== */
-
-function ProjectNavigation() {
-  return (
-    <nav
-      className="
-        fixed
-
-        right-5
-        lg:right-8
-
-        top-1/2
-
-        -translate-y-1/2
-
-        z-50
-
-        hidden
-        md:flex
-
-        flex-col
-
-        gap-3
-      "
-      aria-label="Project navigation"
-    >
-      {projects.map((project, index) => (
-        <a
-          key={project.number}
-          href={`#project-${project.slug}`}
-          aria-label={`Go to ${project.title}`}
-          className="
-            w-9
-            h-9
-
-            flex
-            items-center
-            justify-center
-
-            rounded-full
-
-            border
-            border-forest-500/15
-
-            dark:border-milky-500/15
-
-            bg-milky-500/60
-
-            dark:bg-[#071412]/60
-
-            backdrop-blur-md
-
-            text-xs
-
-            hover:bg-forest-500
-            hover:text-milky-500
-
-            dark:hover:bg-mint-500
-            dark:hover:text-forest-500
-
-            transition-all
-            duration-200
-          "
-        >
-          {String(index + 1).padStart(2, "0")}
-        </a>
-      ))}
-    </nav>
-  );
-}

@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 // import { postPrompt } from "../../api/script.js"; // adjust path to match your project structure
 
 const QUICK_REPLIES = ["Projects", "Skills", "Contact", "Education"];
@@ -42,7 +43,13 @@ function Message({ msg }) {
               : "bg-forest-500 dark:bg-brown-100 text-milky-500 dark:text-forest-500 rounded-br-sm"
           }`}
       >
-        {msg.text}
+        {" "}
+        <ReactMarkdown
+        // className="prose prose-sm text-forest-500 dark:text-milky-500"
+        // linkTarget="_blank"
+        >
+          {msg.text}
+        </ReactMarkdown>
         <p
           className={`text-[10px] mt-1 opacity-40 ${isBot ? "text-left" : "text-right"}`}
         >
@@ -60,7 +67,7 @@ export default function Chatbot() {
     {
       id: 1,
       from: "bot",
-      text: "Hey! I'm Som's assistant powered by Gemini ✨ Ask me anything about her projects, skills, or how to get in touch!",
+      text: "Hey! I'm Mary's assistant. How can I help you today?",
       time: "just now",
     },
   ]);
@@ -92,8 +99,10 @@ export default function Chatbot() {
     setInput("");
     setTyping(true);
 
+    //Note: Fetching from the API route that handles OpenRouter requests, from handler
+
     try {
-      const data = await fetch("/api/geminiAPI", {
+      const data = await fetch("/api/openRouteAPI", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -101,7 +110,6 @@ export default function Chatbot() {
         body: JSON.stringify({ prompt: text.trim() }),
       });
       const result = await data.json();
-      // Handle common Gemini response shapes
       const reply =
         result?.response ||
         result?.text ||
@@ -211,35 +219,6 @@ export default function Chatbot() {
               </div>
             </div>
           </div>
-
-          {/* Dark mode toggle */}
-          {/* <button
-            onClick={() => setDark((d) => !d)}
-            className="w-8 h-8 rounded-full flex items-center justify-center text-milky-500/70 hover:text-milky-500 hover:bg-milky-500/10 transition-colors"
-            aria-label="Toggle dark mode"
-          >
-            {dark ? (
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24">
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                />
-              </svg>
-            ) : (
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24">
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                />
-              </svg>
-            )}
-          </button> */}
         </div>
 
         {/* Accent stripe */}
