@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { projects, filters } from "../assets/data/projects";
 import { Link } from "react-router-dom";
-const Hero = ({ text = "My Projects" }) => {
+const Hero = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
   const normalizeCategory = (value) => value.trim().toLowerCase();

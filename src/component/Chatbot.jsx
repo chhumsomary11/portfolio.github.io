@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-// import { postPrompt } from "../../api/script.js"; // adjust path to match your project structure
 
 const QUICK_REPLIES = ["Projects", "Skills", "Contact", "Education"];
 
@@ -62,7 +61,6 @@ function Message({ msg }) {
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(false);
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -77,10 +75,6 @@ export default function Chatbot() {
   const bottomRef = useRef(null);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
-
-  useEffect(() => {
     if (open) setUnread(0);
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [open, messages]);
@@ -90,6 +84,15 @@ export default function Chatbot() {
 
   const sendMessage = async (text) => {
     if (!text.trim() || typing) return;
+
+    // Last few turns (skipping the greeting) so the bot can follow the conversation
+    const history = messages
+      .filter((m) => m.id !== 1)
+      .slice(-10)
+      .map((m) => ({
+        role: m.from === "bot" ? "assistant" : "user",
+        content: m.text,
+      }));
 
     // Add user message
     setMessages((m) => [
@@ -102,20 +105,19 @@ export default function Chatbot() {
     //Note: Fetching from the API route that handles OpenRouter requests, from handler
 
     try {
-      const data = await fetch("/api/openRouteAPI", {
+      const data = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt: text.trim() }),
+        body: JSON.stringify({ prompt: text.trim(), history }),
       });
       const result = await data.json();
       const reply =
         result?.response ||
-        result?.text ||
-        result?.message ||
-        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "Got it! ✅";
+        (data.ok
+          ? "Got it! ✅"
+          : "⚠️ Miku is napping right now. Please try again in a minute.");
 
       setMessages((m) => [
         ...m,

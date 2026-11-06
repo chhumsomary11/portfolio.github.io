@@ -2,7 +2,7 @@
 
 ## Project overview
 
-React + Vite single-page portfolio for Chhumsomary (Mary). Dark/light theme toggle, Tailwind CSS v4, react-router-dom, and a chatbot powered by Google Gemini AI via OpenRouter. Two page routes: `/` (Index) and `/projects` (ProjectShowcase). The site showcases Mary's projects, skills, and provides a contact form (serverless email) and an AI chatbot that answers questions about Mary and her work.
+React + Vite single-page portfolio for Chhumsomary (Mary). Dark/light theme toggle, Tailwind CSS v4, react-router-dom, and a chatbot powered by Google Gemini with an OpenRouter fallback. Two page routes: `/` (Index) and `/projects` (ProjectShowcase). The site showcases Mary's projects, skills, and provides a contact form (serverless email) and an AI chatbot that answers questions about Mary and her work.
 
 ## Key commands
 
@@ -20,7 +20,7 @@ No test framework or CI workflows are configured.
 | `src/pages/`       | Page-level components (Index, Contact, AboutMe, Education, Experience, ProjectShowcase) |
 | `src/component/`   | Reusable components (Nav, Chatbot, MarsBackground, DarkBtn, DownloadResume, Footer)     |
 | `src/assets/data/` | Data files (contact_icon.jsx, education.js, experiences.js, projects.js)                |
-| `api/`             | Vercel serverless functions (emailJsAPI.js, openRouteAPI.js)                            |
+| `api/`             | Vercel serverless functions (emailJsAPI.js, chat.js)                                    |
 | `public/`          | Static assets (images, favicons, files/CV.pdf)                                          |
 | `dist/`            | Build output (gitignored)                                                               |
 
@@ -29,7 +29,7 @@ No test framework or CI workflows are configured.
 The `api/` directory follows Vercel's convention — functions are deployed as serverless endpoints:
 
 - `api/emailJsAPI.js` — sends email via `@emailjs/nodejs` (server-side, not browser SDK)
-- `api/openRouteAPI.js` — AI chatbot via `openai` client, OpenRouter, model `inclusionai/ling-3.0-flash:free`
+- `api/chat.js` — AI chatbot. Primary: Google Gemini (`@google/genai`, model `gemini-3.5-flash-lite`, override with `GEMINI_MODEL`). Backup: OpenRouter free models tried in order (list at top of the file). Returns 503 if both fail. Persona and facts live in `api/_lib/knowledge.js`
 
 These require Vercel deployment to work; they do **not** run locally without a Vercel dev server.
 
@@ -38,7 +38,7 @@ These require Vercel deployment to work; they do **not** run locally without a V
 - **`export default` syntax must be valid ES module** — `export default handler = async (req, res) => {}` is invalid JS and causes "handler not found" on Vercel. Use `const handler = async (req, res) => {}; export default handler;` or `export default async (req, res) => {}`
 - **All npm imports must be in `package.json` dependencies** — Vercel installs deps from `package.json` before bundling serverless functions. Unlisted imports fail at runtime even after syntax is fixed
 - **OpenRouter baseURL must include `/api/v1`** — The OpenAI SDK appends `/chat/completions` to the base URL, so `https://openrouter.ai` becomes `https://openrouter.ai/chat/completions` (wrong). Use `https://openrouter.ai/api/v1` instead
-- **API file name = endpoint path** — Renaming a file in `api/` changes the URL the frontend must call. `api/openRouteAPI.js` is reachable at `/api/openRouteAPI`, not `/api/geminiAPI`. Keep the frontend fetch path in sync with the serverless function file name
+- **API file name = endpoint path** — Renaming a file in `api/` changes the URL the frontend must call. `api/chat.js` is reachable at `/api/chat`. Keep the frontend fetch path in sync with the serverless function file name
 - **Hash scroll on ProjectShowcase** — `ProjectShowcase.jsx` uses `useLocation()` + `useEffect` to watch `location.hash` and `scrollIntoView()` to the matching project section on load
 
 ## Dark mode
@@ -53,7 +53,7 @@ Uses `class` strategy with localStorage persistence. The `<html>` tag has `data-
 
 ## Environment variables
 
-**⚠️ `.env` is tracked in git** and contains exposed API keys (EMAILJS_PRIVATE_KEY, GEMINI_KEY). The `.gitignore` lists `.env` but the file was already committed. Do not add new secrets without rotating the existing ones.
+`.env` is gitignored and has never been committed (checked `git log --all -- .env`). Server-side keys used by `api/`: `EMAILJS_PUBLIC_KEY`, `EMAILJS_PRIVATE_KEY`, `EMAILJS_SERVICE_ID`, `EMAILJS_TEMPLATE_ID`, `GEMINI_KEY`, `OPENROUTER_KEY` (optional `GEMINI_MODEL`). Set them in the Vercel dashboard too.
 
 ## Import notes
 

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-// import emailjs from "@emailjs/browser";
 import MarsBackground from "../component/MarsBackground";
 import { contacts } from "../assets/data/contact_icon.jsx";
 
@@ -45,67 +44,6 @@ const Contact = () => {
     } finally {
       setSending(false);
     }
-
-    // const key = import.meta.env.EMAIL_KEY;
-    // const template = import.meta.env.EMAIL_TEMPLATE;
-    // const service = import.meta.env.EMAIL_SERVICE;
-    // console.log(key, template, service);
-
-    // const handleSubmit = (e) => {
-    //   e.preventDefault();
-    //   if (sending) return;
-    //   setSending(true);
-
-    //   //1. prepare form data for the req.body
-    //   const formData = new FormData(form.current);
-
-    //   //2. fetch the api from vercel serverless function
-    //   fetch("/api/emailJsAPI.js", {
-    //     method: "POST",
-    //     body: formData,
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       if (data.success) {
-    //         setStatus("success");
-    //         form.current.reset();
-    //         setTimeout(() => {
-    //           setStatus("");
-    //         }, 4000);
-    //       } else {
-    //         setStatus("error");
-    //         console.log("FAILED...", data.error);
-    //         setTimeout(() => {
-    //           setStatus("");
-    //         }, 4000);
-    //       }
-    //     })
-    //     .catch((err) => {
-    //       setStatus("error");
-    //       console.log("Error:", err);
-    //       setTimeout(() => setStatus(""), 4000);
-    //     })
-    //     .finally(() => {
-    //       setSending(false);
-    //     });
-
-    // emailjs
-    //   .sendForm(service, template, form.current, {
-    //     publicKey: key,
-    //   })
-    //   .then(
-    //     () => {
-    //       setStatus("success");
-    //       form.current.reset();
-    //       setTimeout(() => setStatus(""), 4000);
-    //     },
-    //     (error) => {
-    //       setStatus("error");
-    //       console.log("FAILED...", error.text);
-    //       setTimeout(() => setStatus(""), 4000);
-    //     },
-    //   )
-    //   .finally(() => setSending(false));
   };
 
   return (

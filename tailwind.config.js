@@ -10,11 +10,6 @@ export default {
         milky: { 500: "#f8f5f2" },
         brown: { 100: "#f9bc60", 500: "#e16162" },
       },
-    },
-  },
-
-  theme: {
-    extend: {
       keyframes: {
         fadeUp: {
           from: { opacity: "0", transform: "translateY(4px)" },

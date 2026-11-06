@@ -1,14 +1,35 @@
 import emailjs from "@emailjs/nodejs";
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_NAME = 100;
+const MAX_MESSAGE = 3000;
+
 const handle = async (req, res) => {
   if (req.method !== "POST") {
-    return res.status(400).json({ error: "Method not allowed" });
+    res.setHeader("Allow", "POST");
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { user_name, user_email, message } = req.body;
+  const { user_name, user_email, message } = req.body ?? {};
 
   if (!user_name || !user_email || !message) {
     return res.status(400).json({ error: "All fields are required" });
+  }
+
+  if (
+    typeof user_name !== "string" ||
+    typeof user_email !== "string" ||
+    typeof message !== "string"
+  ) {
+    return res.status(400).json({ error: "Invalid input" });
+  }
+
+  if (!EMAIL_PATTERN.test(user_email)) {
+    return res.status(400).json({ error: "Invalid email address" });
+  }
+
+  if (user_name.length > MAX_NAME || message.length > MAX_MESSAGE) {
+    return res.status(400).json({ error: "Input is too long" });
   }
 
   const publicKey = process.env.EMAILJS_PUBLIC_KEY;
@@ -16,10 +37,9 @@ const handle = async (req, res) => {
   const serviceID = process.env.EMAILJS_SERVICE_ID;
   const templateID = process.env.EMAILJS_TEMPLATE_ID;
 
-  console.log({ publicKey, privateKey, serviceID, templateID });
-
   if (!publicKey || !privateKey || !serviceID || !templateID) {
-    return res.status(500).json({ error: "Missing EmailJS configuration" });
+    console.error("Missing EmailJS configuration");
+    return res.status(500).json({ error: "Server configuration error" });
   }
 
   try {
@@ -31,7 +51,7 @@ const handle = async (req, res) => {
         from_email: user_email,
         message,
       },
-      { publicKey: publicKey, privateKey: privateKey },
+      { publicKey, privateKey },
     );
 
     return res
@@ -39,60 +59,10 @@ const handle = async (req, res) => {
       .json({ success: true, message: "Email sent successfully" });
   } catch (err) {
     console.error("Error sending email:", err);
-    return res.status(500).json({
-      success: false,
-      error: err.message,
-      details: err, // add this for more insight
-    });
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to send email" });
   }
 };
 
 export default handle;
-
-// import emailjs from "@emailjs/nodejs";
-
-// const handle = async (req, res) => {
-//   if (req.method !== "POST") {
-//     return res.status(405).json({ error: "Method not allowed" });
-//   }
-
-//   const { user_name, user_email, message } = req.body;
-
-//   if (!user_name || !user_email || !message) {
-//     return res.status(400).json({ error: "All fields are required" });
-//   }
-
-//   try {
-//     const response = await fetch(
-//       "https://api.emailjs.com/api/v1.0/email/send",
-//       {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//           service_id: process.env.EMAILJS_SERVICE_ID,
-//           template_id: process.env.EMAILJS_TEMPLATE_ID,
-//           user_id: process.env.EMAILJS_PUBLIC_KEY, // public key
-//           accessToken: process.env.EMAILJS_PRIVATE_KEY, // private key
-//           template_params: {
-//             from_name: user_name,
-//             from_email: user_email,
-//             message: message,
-//           },
-//         }),
-//       },
-//     );
-
-//     if (!response.ok) {
-//       const errText = await response.text();
-//       console.error("EmailJS error:", errText);
-//       return res.status(500).json({ success: false, error: errText });
-//     }
-
-//     return res.status(200).json({ success: true });
-//   } catch (err) {
-//     console.error("Error sending email:", err);
-//     return res.status(500).json({ success: false, error: err.message });
-//   }
-// };
-
-// export default handle;
