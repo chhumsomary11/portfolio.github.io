@@ -1,10 +1,13 @@
 import { GoogleGenAI } from "@google/genai";
 import OpenAI from "openai";
+import { splitActions } from "./_lib/actions.js";
 import { systemPrompt } from "./_lib/knowledge.js";
+import { checkRateLimit, clientIp } from "./_lib/rateLimit.js";
 
 const MAX_PROMPT = 500;
 const MAX_HISTORY = 10;
-const MAX_OUTPUT_TOKENS = 300;
+// Khmer takes many more tokens than English, so leave room for it.
+const MAX_OUTPUT_TOKENS = 500;
 
 // Primary: Google Gemini. Override the model with GEMINI_MODEL without a code change.
 const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
@@ -57,10 +60,21 @@ async function askOpenRouter(messages) {
   return null;
 }
 
+const reply = (res, raw) => {
+  const { text, actions } = splitActions(raw);
+  return res.status(200).json({ response: text, actions });
+};
+
 const handler = async (req, res) => {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  const limit = checkRateLimit(clientIp(req));
+  if (!limit.ok) {
+    res.setHeader("Retry-After", String(limit.retryAfter));
+    return res.status(429).json({ error: "Too many messages, slow down" });
   }
 
   const { prompt, history } = req.body ?? {};
@@ -88,7 +102,7 @@ const handler = async (req, res) => {
   if (process.env.GEMINI_KEY) {
     try {
       const text = await askGemini(messages);
-      if (text?.trim()) return res.status(200).json({ response: text });
+      if (text?.trim()) return reply(res, text);
       console.error("Gemini returned an empty reply");
     } catch (error) {
       console.error("Gemini failed:", error.message);
@@ -97,7 +111,7 @@ const handler = async (req, res) => {
 
   if (process.env.OPENROUTER_KEY) {
     const text = await askOpenRouter(messages);
-    if (text) return res.status(200).json({ response: text });
+    if (text) return reply(res, text);
   }
 
   return res.status(503).json({ error: "Chatbot is unavailable right now" });

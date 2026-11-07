@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-theme="dark" lang="en">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link
@@ -23,11 +23,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&family=Kantumruy+Pro:wght@500;700&display=swap"
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>myportfolio</title>
+    <title>Mary | Aspiring Software Developer, Phnom Penh</title>
+    <script>
+      // Apply the saved day/dusk choice before first paint (day by default).
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("theme") === "dark" ? "dark" : "light";
+      } catch (e) {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

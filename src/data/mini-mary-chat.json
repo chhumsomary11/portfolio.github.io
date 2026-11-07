@@ -1,0 +1,99 @@
+{
+  "starterQuestions": [
+    {
+      "label": "What did you build at SastraAI?",
+      "answer": "sastra"
+    },
+    {
+      "label": "What's your tech stack?",
+      "answer": "stack"
+    },
+    {
+      "label": "Are you open to internships?",
+      "answer": "open"
+    },
+    {
+      "label": "Get your CV",
+      "answer": "cv"
+    },
+    {
+      "label": "និយាយភាសាខ្មែរ",
+      "answer": "khmer"
+    }
+  ],
+  "scriptedAnswers": {
+    "sastra": {
+      "text": "I co-founded SastraAI, an AI tutor for math and science students in Cambodia's bilingual and EMI schools. I worked on the React web and mobile frontend, and led parent surveys and our B2B2C go-to-market plan.",
+      "actions": [
+        {
+          "label": "Open the SastraAI quest",
+          "act": "quest:sastra"
+        }
+      ]
+    },
+    "stack": {
+      "text": "JavaScript, React, TypeScript, Node.js, Python and AWS (I'm an AWS Certified Cloud Practitioner). At my internship I used React, TypeScript, Ant Design and UmiJS.",
+      "actions": [
+        {
+          "label": "See my experience",
+          "act": "goto:experience"
+        }
+      ]
+    },
+    "open": {
+      "text": "Yes! I'm looking for an internship or graduate program. The fastest way to reach the real me is the contact form.",
+      "actions": [
+        {
+          "label": "Go to contact",
+          "act": "goto:contact"
+        }
+      ]
+    },
+    "cv": {
+      "text": "Here you go!",
+      "actions": [
+        {
+          "label": "Download CV",
+          "act": "cv"
+        }
+      ]
+    },
+    "khmer": {
+      "text": "ចាស! ខ្ញុំអាចឆ្លើយជាភាសាខ្មែរបាន។ សួរខ្ញុំអំពីគម្រោង ឬបទពិសោធន៍ការងាររបស់ម៉ារីបាន។",
+      "actions": []
+    },
+    "thanks": {
+      "text": "អរគុណ! Thanks for stopping by.",
+      "actions": [],
+      "thanks": true
+    },
+    "fallback": {
+      "text": "This is a preview, so I can only answer the starter questions for now. On the real site I'll answer from Mary's CV, and if I don't know, I'll point you to the real Mary.",
+      "actions": [
+        {
+          "label": "Message the real Mary",
+          "act": "goto:contact"
+        }
+      ]
+    },
+    "unavailable": {
+      "text": "I can't reach my AI brain right now. Please try again in a minute, or message the real Mary.",
+      "actions": [
+        {
+          "label": "Message the real Mary",
+          "act": "goto:contact"
+        }
+      ]
+    },
+    "rateLimited": {
+      "text": "I'm getting a lot of questions at once. Give me a minute, or message the real Mary directly.",
+      "actions": [
+        {
+          "label": "Message the real Mary",
+          "act": "goto:contact"
+        }
+      ]
+    }
+  },
+  "note": "Starter chips and typed questions go to /api/chat. These scripted answers are the offline fallback when the AI endpoint fails."
+}

@@ -14,14 +14,10 @@
     "@emailjs/nodejs": "^5.0.2",
     "@google/genai": "^3.0.0",
     "@tailwindcss/vite": "^4.1.18",
-    "motion": "^12.42.2",
     "openai": "^5.7.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-markdown": "^10.1.0",
-    "react-router-dom": "^7.18.1",
-    "tailwindcss": "^4.1.18",
-    "three": "^0.183.2"
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

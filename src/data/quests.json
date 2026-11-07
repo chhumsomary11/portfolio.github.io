@@ -1,0 +1,171 @@
+[
+  {
+    "key": "sastra",
+    "img": "/lotus/items/item-scroll.svg",
+    "item": "Palm-leaf scroll",
+    "title": "SastraAI",
+    "category": "AI · Web App",
+    "status": "In progress",
+    "band": "#4a3a12",
+    "tile": "#f6e7b8",
+    "quest": "Help students in Cambodia's bilingual and EMI schools get unstuck on math and science, in Khmer or English.",
+    "move": "Co-founded it. Built the React web and mobile frontend, ran parent surveys and shaped a B2B2C go-to-market plan.",
+    "reward": "Semi-finalist at university venture capital and hackathon pitch competitions (Khmer Enterprise).",
+    "tech": [
+      "React",
+      "AI",
+      "OCR"
+    ],
+    "links": [
+      {
+        "label": "Live demo",
+        "href": "#"
+      },
+      {
+        "label": "Case study",
+        "href": "#"
+      }
+    ],
+    "shot": "/lotus/shots/sastra.webp",
+    "shotAlt": "SastraAI web app screenshot"
+  },
+  {
+    "key": "poseup",
+    "img": "/lotus/items/item-posture.svg",
+    "item": "Upright figure",
+    "title": "PoseUp",
+    "category": "AI · Computer vision",
+    "status": "",
+    "band": "#4a1f33",
+    "tile": "#f8d9dd",
+    "quest": "Help people fix their posture with real-time feedback from a camera.",
+    "move": "Co-founded the project and led the UX/UI design in Figma.",
+    "reward": "1st place at the National AI Competition (CADT, MOEY & RCC), with an educational trip to Singapore.",
+    "tech": [
+      "Python",
+      "Computer Vision",
+      "Figma"
+    ],
+    "links": [
+      {
+        "label": "Case study",
+        "href": "#"
+      },
+      {
+        "label": "GitHub",
+        "href": "#"
+      }
+    ],
+    "shot": "/lotus/shots/poseup.webp",
+    "shotAlt": "PoseUp web app screenshot"
+  },
+  {
+    "key": "platypus",
+    "img": "/lotus/items/item-basket.svg",
+    "item": "Market basket",
+    "title": "Platypus E-commerce",
+    "category": "Web App",
+    "status": "",
+    "band": "#3f2a1a",
+    "tile": "#f1dcc0",
+    "quest": "A responsive online storefront that works on any screen.",
+    "move": "Built it with JavaScript and Bootstrap.",
+    "reward": "[Add a result or what you learned]",
+    "tech": [
+      "JavaScript",
+      "Bootstrap",
+      "HTML"
+    ],
+    "links": [
+      {
+        "label": "Live demo",
+        "href": "#"
+      },
+      {
+        "label": "GitHub",
+        "href": "#"
+      }
+    ],
+    "shot": "/lotus/shots/platypus.webp",
+    "shotAlt": "Platypus e-commerce site screenshot"
+  },
+  {
+    "key": "movie",
+    "img": "/lotus/items/item-clapper.svg",
+    "item": "Clapperboard",
+    "title": "Movie Application",
+    "category": "Web App",
+    "status": "",
+    "band": "#22264a",
+    "tile": "#d9def3",
+    "quest": "Search and browse movies from a public database.",
+    "move": "Built it in React, fetching from a public movie API.",
+    "reward": "[Add a result or what you learned]",
+    "tech": [
+      "React",
+      "REST API",
+      "CSS"
+    ],
+    "links": [
+      {
+        "label": "Live demo",
+        "href": "#"
+      },
+      {
+        "label": "GitHub",
+        "href": "#"
+      }
+    ],
+    "shot": "/lotus/shots/movie.webp",
+    "shotAlt": "Movie Application screenshot"
+  },
+  {
+    "key": "todo",
+    "img": "/lotus/items/item-slate.svg",
+    "item": "Task slate",
+    "title": "To-Do List",
+    "category": "Tool",
+    "status": "",
+    "band": "#24361f",
+    "tile": "#dfe8d2",
+    "quest": "A simple, calm way to keep track of tasks.",
+    "move": "Built drag-and-drop reordering, saved in the browser with LocalStorage.",
+    "reward": "[Add a result or what you learned]",
+    "tech": [
+      "JavaScript",
+      "LocalStorage"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "#"
+      }
+    ],
+    "shot": "/lotus/shots/todo.webp",
+    "shotAlt": "To-Do List app screenshot"
+  },
+  {
+    "key": "portfolio",
+    "img": "/lotus/items/item-window.svg",
+    "item": "Lotus window",
+    "title": "This Portfolio",
+    "category": "Web App",
+    "status": "",
+    "band": "#0b3a37",
+    "tile": "#d6ecee",
+    "quest": "A portfolio that feels like a place, not a list.",
+    "move": "React and Tailwind, with dark mode, an AI chatbot and a serverless contact form.",
+    "reward": "You're looking at it.",
+    "tech": [
+      "React",
+      "Tailwind",
+      "EmailJS"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "#"
+      }
+    ]
+  }
+]

@@ -2,7 +2,7 @@
 
 ## Project overview
 
-React + Vite single-page portfolio for Chhumsomary (Mary). Dark/light theme toggle, Tailwind CSS v4, react-router-dom, and a chatbot powered by Google Gemini with an OpenRouter fallback. Two page routes: `/` (Index) and `/projects` (ProjectShowcase). The site showcases Mary's projects, skills, and provides a contact form (serverless email) and an AI chatbot that answers questions about Mary and her work.
+React + Vite single-page portfolio for Chhumsomary (Mary). Day/dusk theme toggle, Tailwind CSS v4 and the "Lotus & Angkor" pixel-art design (spec in `lotus-portfolio-design/HANDOFF.md`). A single page at `/`. Mini Mary calls `api/chat.js` (Gemini with an OpenRouter fallback). Its system prompt is built from `src/data/cv.json` and `quests.json` (`api/_lib/knowledge.js`), the endpoint is rate-limited per IP, and the scripted answers in `mini-mary-chat.json` are the offline fallback. The site showcases Mary's projects, skills, and provides a contact form (serverless email) and an AI chatbot that answers questions about Mary and her work.
 
 ## Key commands
 
@@ -15,14 +15,15 @@ No test framework or CI workflows are configured.
 
 ## Architecture
 
-| Path               | Role                                                                                    |
-| ------------------ | --------------------------------------------------------------------------------------- |
-| `src/pages/`       | Page-level components (Index, Contact, AboutMe, Education, Experience, ProjectShowcase) |
-| `src/component/`   | Reusable components (Nav, Chatbot, MarsBackground, DarkBtn, DownloadResume, Footer)     |
-| `src/assets/data/` | Data files (contact_icon.jsx, education.js, experiences.js, projects.js)                |
-| `api/`             | Vercel serverless functions (emailJsAPI.js, chat.js)                                    |
-| `public/`          | Static assets (images, favicons, files/CV.pdf)                                          |
-| `dist/`            | Build output (gitignored)                                                               |
+| Path               | Role                                                                                      |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| `src/pages/`       | `Index.jsx`: the single page, assembling the sections                                     |
+| `src/component/`   | Nav, HeroScene, SpeechBox, AboutStrip, Experience, SelectedWork (+QuestStory/QuestFacts), EducationAwards, Contact, Footer, MiniMary, Reveal (scroll entrances) |
+| `src/data/`        | Content as JSON: `cv.json`, `quests.json`, `dialogue.json`, `mini-mary-chat.json`        |
+| `src/hooks/`       | `useDusk`, `useMediaQuery`                                                                |
+| `src/index.css`    | Theme tokens (`:root` / `[data-theme="dark"]`), pixel-border utilities, all animations    |
+| `api/`             | Vercel serverless functions (emailJsAPI.js, chat.js)                                      |
+| `public/`          | Static assets (`lotus/` scene, sprites, items; favicons; `files/generalCV.pdf`)           |
 
 ## Serverless functions
 
@@ -39,17 +40,17 @@ These require Vercel deployment to work; they do **not** run locally without a V
 - **All npm imports must be in `package.json` dependencies** — Vercel installs deps from `package.json` before bundling serverless functions. Unlisted imports fail at runtime even after syntax is fixed
 - **OpenRouter baseURL must include `/api/v1`** — The OpenAI SDK appends `/chat/completions` to the base URL, so `https://openrouter.ai` becomes `https://openrouter.ai/chat/completions` (wrong). Use `https://openrouter.ai/api/v1` instead
 - **API file name = endpoint path** — Renaming a file in `api/` changes the URL the frontend must call. `api/chat.js` is reachable at `/api/chat`. Keep the frontend fetch path in sync with the serverless function file name
-- **Hash scroll on ProjectShowcase** — `ProjectShowcase.jsx` uses `useLocation()` + `useEffect` to watch `location.hash` and `scrollIntoView()` to the matching project section on load
 
-## Dark mode
+## Dusk mode
 
-Uses `class` strategy with localStorage persistence. The `<html>` tag has `data-theme="dark"` by default. Theme is synced across components via `localStorage` and a `storage` event listener in `DarkBtn`. Tailwind's `dark:` prefix applies when the class is present. Custom dark variant defined in `src/index.css` via `@custom-variant`. The `Nav` component hides automatically on `/projects` route (no matching IntersectionObserver sections).
+Day is the default. `DuskToggle` sets `data-theme="dark"` on `<html>` and stores `theme` in localStorage; an inline script in `index.html` applies it before first paint. The theme tokens (`--page`, `--ink`, `--band`, ...) live in `src/index.css` under `:root` and `:root[data-theme="dark"]`, and are exposed to Tailwind with `@theme inline` (`bg-page`, `text-ink`, `font-pixel`, ...). `useDusk` lets components (the hero scene) react to the switch.
 
 ## Styling
 
-- Tailwind CSS v4 with `@tailwindcss/vite` plugin in `vite.config.js`
-- Custom theme colors in `tailwind.config.js` and `@theme` block in `src/index.css`
-- Fonts: "Fleur De Leah" (display), "Space Mono" (mono), "Inter" (sans)
+- Tailwind CSS v4 with `@tailwindcss/vite` (no `tailwind.config.js`; config is in `src/index.css`)
+- Pixel borders: `pixel-border-4/3/2` and `pixel-card` utilities. No rounded corners.
+- Fonts: Pixelify Sans (headings), Inter (body), Space Mono (labels), Kantumruy Pro (Khmer)
+- Animations use `steps()` and are disabled under `prefers-reduced-motion`. Scroll entrances use `Reveal` (`ap-rv` / `ap-hop` classes)
 
 ## Environment variables
 
@@ -58,9 +59,7 @@ Uses `class` strategy with localStorage persistence. The `<html>` tag has `data-
 ## Import notes
 
 - macOS case-insensitive filesystem can mask case-mismatch bugs in imports
-- `App.jsx` imports `ProjectsShowcase` from `./pages/ProjectShowcase.jsx` (capital S in filename)
-- Nav.jsx uses IntersectionObserver for active-section tracking; `rootMargin: "-30% 0px -30% 0px"` and `reduce` with proper accumulator return
-- Nav.jsx also has a route-change sync effect: when `location.pathname` changes to `"/"`, it recalculates active section via distance-to-viewport-center to fix stale highlights after navigating back from `/projects`
+- Page content is data: edit `src/data/*.json`, not the components
 
 ## Deployment
 

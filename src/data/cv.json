@@ -1,0 +1,106 @@
+{
+  "experiences": [
+    {
+      "period": "May – Aug 2026",
+      "org": "One Fraternity Co., LTD",
+      "role": "Intern Application Developer",
+      "points": [
+        "Developed a centralized employee portal with React, TypeScript, Ant Design and UmiJS.",
+        "Built announcement, audience-targeting, partner-store approval, map and Excel export features.",
+        "Integrated REST APIs and implemented role-based access control; worked through Git branches and pull requests."
+      ],
+      "tech": [
+        "React",
+        "TypeScript",
+        "Ant Design",
+        "UmiJS",
+        "REST APIs"
+      ]
+    },
+    {
+      "period": "2026 – Present",
+      "org": "SastraAI",
+      "role": "Co-founder",
+      "points": [
+        "Contributed to the React web and mobile frontend of an AI tutor for Cambodian students.",
+        "Led customer discovery through parent surveys and designed a B2B2C go-to-market strategy.",
+        "Semi-finalist at university venture capital and hackathon pitch competitions (Khmer Enterprise)."
+      ],
+      "tech": [
+        "React",
+        "AI",
+        "Go-to-market"
+      ]
+    },
+    {
+      "period": "2025",
+      "org": "PoseUp",
+      "role": "Co-founder & UX/UI Designer",
+      "points": [
+        "Led UX/UI design for an AI web app that tracks body posture and gives real-time feedback.",
+        "1st place at the National AI Competition (CADT, MOEY & RCC), with an educational trip to Singapore."
+      ],
+      "tech": [
+        "Figma",
+        "UX/UI",
+        "Computer Vision"
+      ]
+    },
+    {
+      "period": "2024",
+      "org": "TIN Cafe & Eatery",
+      "role": "Part-time Marketing Strategist",
+      "points": [],
+      "tech": []
+    }
+  ],
+  "education": [
+    {
+      "period": "2023 – Now",
+      "degree": "B.Sc. Information & Communication Technology",
+      "school": "American University of Phnom Penh · Fully funded scholarship"
+    },
+    {
+      "period": "2022 – 2026",
+      "degree": "Bachelor of Education in English",
+      "school": "Institute of Foreign Languages"
+    },
+    {
+      "period": "2025",
+      "degree": "Web Development & UX/UI Certificate",
+      "school": "IT Step Academy"
+    },
+    {
+      "period": "2022",
+      "degree": "Diploma of Academic Writing and Research",
+      "school": "Australian Centre for Education"
+    }
+  ],
+  "awards": [
+    {
+      "year": "2025",
+      "title": "1st Place, National AI Competition",
+      "note": "Hosted by CADT, MOEY & RCC · trip to Singapore"
+    },
+    {
+      "year": "2024",
+      "title": "AWS Certified Cloud Practitioner",
+      "note": "Funded by USAID"
+    },
+    {
+      "year": "2025",
+      "title": "Web Development & UX/UI Course Scholarship",
+      "note": "Funded by Sisters of Code"
+    },
+    {
+      "year": "2023 – Now",
+      "title": "Fully Funded Scholarship, AUPP",
+      "note": "American University of Phnom Penh"
+    },
+    {
+      "year": "2022",
+      "title": "IELTS Band 7.0",
+      "note": "Listening 8.5 · Reading 7.5 · Speaking 6.5 · Writing 6.0"
+    }
+  ]
+}
