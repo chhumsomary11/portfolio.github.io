@@ -11,19 +11,15 @@
     "quest": "Help students in Cambodia's bilingual and EMI schools get unstuck on math and science, in Khmer or English.",
     "move": "Co-founded it. Built the React web and mobile frontend, ran parent surveys and shaped a B2B2C go-to-market plan.",
     "reward": "Semi-finalist at university venture capital and hackathon pitch competitions (Khmer Enterprise).",
-    "tech": [
-      "React",
-      "AI",
-      "OCR"
-    ],
+    "tech": ["React", "AI", "OCR"],
     "links": [
       {
         "label": "Live demo",
-        "href": "#"
+        "href": "https://sastra-ai.tech/"
       },
       {
-        "label": "Case study",
-        "href": "#"
+        "label": "GitHub",
+        "href": "https://github.com/SikhaAI"
       }
     ],
     "shot": "/lotus/shots/sastra.webp",
@@ -41,19 +37,15 @@
     "quest": "Help people fix their posture with real-time feedback from a camera.",
     "move": "Co-founded the project and led the UX/UI design in Figma.",
     "reward": "1st place at the National AI Competition (CADT, MOEY & RCC), with an educational trip to Singapore.",
-    "tech": [
-      "Python",
-      "Computer Vision",
-      "Figma"
-    ],
+    "tech": ["Python", "Computer Vision", "Figma"],
     "links": [
       {
         "label": "Case study",
-        "href": "#"
+        "href": "https://poseup.raoulhub.com/signup"
       },
       {
         "label": "GitHub",
-        "href": "#"
+        "href": "https://github.com/PoseUp"
       }
     ],
     "shot": "/lotus/shots/poseup.webp",
@@ -71,19 +63,15 @@
     "quest": "A responsive online storefront that works on any screen.",
     "move": "Built it with JavaScript and Bootstrap.",
     "reward": "[Add a result or what you learned]",
-    "tech": [
-      "JavaScript",
-      "Bootstrap",
-      "HTML"
-    ],
+    "tech": ["JavaScript", "Bootstrap", "HTML"],
     "links": [
       {
         "label": "Live demo",
-        "href": "#"
+        "href": "https://platypus-ecommerce-website.vercel.app/"
       },
       {
         "label": "GitHub",
-        "href": "#"
+        "href": "https://github.com/chhumsomary11/Platypus-E-commerse-website"
       }
     ],
     "shot": "/lotus/shots/platypus.webp",
@@ -101,19 +89,11 @@
     "quest": "Search and browse movies from a public database.",
     "move": "Built it in React, fetching from a public movie API.",
     "reward": "[Add a result or what you learned]",
-    "tech": [
-      "React",
-      "REST API",
-      "CSS"
-    ],
+    "tech": ["React", "REST API", "CSS"],
     "links": [
       {
-        "label": "Live demo",
-        "href": "#"
-      },
-      {
         "label": "GitHub",
-        "href": "#"
+        "href": "http://github.com/chhumsomary11/React-Movie"
       }
     ],
     "shot": "/lotus/shots/movie.webp",
@@ -131,14 +111,15 @@
     "quest": "A simple, calm way to keep track of tasks.",
     "move": "Built drag-and-drop reordering, saved in the browser with LocalStorage.",
     "reward": "[Add a result or what you learned]",
-    "tech": [
-      "JavaScript",
-      "LocalStorage"
-    ],
+    "tech": ["JavaScript", "LocalStorage"],
     "links": [
       {
+        "label": "Live demo",
+        "href": "https://to-do-list-silk-phi.vercel.app/"
+      },
+      {
         "label": "GitHub",
-        "href": "#"
+        "href": "https://github.com/chhumsomary11/toDoList"
       }
     ],
     "shot": "/lotus/shots/todo.webp",
@@ -156,15 +137,15 @@
     "quest": "A portfolio that feels like a place, not a list.",
     "move": "React and Tailwind, with dark mode, an AI chatbot and a serverless contact form.",
     "reward": "You're looking at it.",
-    "tech": [
-      "React",
-      "Tailwind",
-      "EmailJS"
-    ],
+    "tech": ["React", "Tailwind", "EmailJS"],
     "links": [
       {
-        "label": "GitHub",
+        "label": "Live demo",
         "href": "#"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/chhumsomary11/portfolio.github.io"
       }
     ]
   }
